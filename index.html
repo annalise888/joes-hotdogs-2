@@ -1,0 +1,81 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Joe's Hotdogs 2</title>
+	
+	<script language="javascript">
+		function orderDetails() {
+			var numHotdogs = parseInt(document.getElementById("hotdogs").value);
+			var numFries = parseInt(document.getElementById("fries").value);
+			var numSodas = parseInt(document.getElementById("soda").value);
+			var subtotal = (numHotdogs * 3.25) + (numFries *2.00) + (numSodas *1.50);
+			var discount = 0;
+			if (subtotal>=0) {
+				discount = subtotal*0.1;
+			}
+			var tax = subtotal*.0625
+			var totalPrice = subtotal - discount + tax;
+			var order = "";
+			if (numHotdogs==0 && numFries==0 && numSodas==0) {
+				order = "No items have been ordered.";
+			} else {
+				order = "Items ordered: "+"\r\n"+"Hotdogs: "+numHotdogs+"\r\n"+"Fries: "+numFries+"\r\n"+"Sodas: "+numSodas+"\r\n"+"\r\n"
+				+"Subtotal: $"+subtotal.toFixed(2)+"\r\n"+"Discount: -$"+discount.toFixed(2)+"\r\n"+"Tax: $"+tax.toFixed(2)+"\r\n"+"Total: $"+totalPrice.toFixed(2);
+			}
+			alert(order);
+		}
+	</script>
+	
+</head>
+
+<body>
+	
+	<form>
+		<label for="hotdogs">Hotdogs ($3.25 each):</label>
+		<select id="hotdogs" name="hotdogs">
+			<option value="0"></option>
+			<option value="1">1</option>
+			<option value="2">2</option>
+			<option value="3">3</option>
+			<option value="4">4</option>
+			<option value="5">5</option>
+			<option value="10">10</option>
+			<option value="15">15</option>
+			<option value="20">20</option>
+		</select> 
+		<br>
+		
+		<label for="fries">Fries ($2.00 each):</label>
+		<select id="fries" name="fries">
+			<option value="0"></option>
+			<option value="1">1</option>
+			<option value="2">2</option>
+			<option value="3">3</option>
+			<option value="4">4</option>
+			<option value="5">5</option>
+			<option value="10">10</option>
+			<option value="15">15</option>
+			<option value="20">20</option>
+		</select> 
+		<br>
+		
+		<label for="soda">Soda ($1.50 each):</label>
+		<select id="soda" name="soda">
+			<option value="0"></option>
+			<option value="1">1</option>
+			<option value="2">2</option>
+			<option value="3">3</option>
+			<option value="4">4</option>
+			<option value="5">5</option>
+			<option value="10">10</option>
+			<option value="15">15</option>
+			<option value="20">20</option>
+		</select> 
+		<br> <br>
+		
+		<button type="button" onclick="orderDetails();">Done</button>
+	</form>
+	
+</body>
+</html>
